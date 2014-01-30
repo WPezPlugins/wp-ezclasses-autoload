@@ -56,6 +56,7 @@ if ( ! class_exists('WP_ezClasses_Autoload')){
 		private $_version;
 		private $_url;
 		private	$_path;
+		private $_path_parent;
 		private $_basename;
 		private $_file;
 		
@@ -66,6 +67,7 @@ if ( ! class_exists('WP_ezClasses_Autoload')){
 			$this->_version = '0.5.0';
 			$this->_url = plugin_dir_url( __FILE__ );
 			$this->_path = plugin_dir_path( __FILE__ );
+			$this->_path_parent = dirname($this->_path);
 			$this->_basename = plugin_basename( __FILE__ );
 			$this->_file = __FILE__ ;
 		
@@ -120,10 +122,10 @@ if ( ! class_exists('WP_ezClasses_Autoload')){
 					
 				if ( strpos($str_class, 'class-wp-ezclasses-') === 0 ){
 					$int_offset = strlen('class-wp-ezclasses-');
-					$str_main_folder = 'ezclasses';
+					$str_main_folder = 'wp-ezclasses';
 				} else {
 					$int_offset = strlen('class-wp-myclasses-');
-					$str_main_folder = 'myclasses';
+					$str_main_folder = 'wp-myclasses';
 				}
 			
 				$int_pos_directory_lead_underscore = strpos($str_class, '-', $int_offset);
@@ -133,8 +135,9 @@ if ( ! class_exists('WP_ezClasses_Autoload')){
 				$str_directory_sub = strtolower(substr( $str_class, $int_pos_directory_trail_underscore, strlen($str_class) ));
 
 				$str_filename = $str_class . '.php';
-				$str_file =  rtrim($this->_path,'/') . DIRECTORY_SEPARATOR . $str_main_folder . DIRECTORY_SEPARATOR . $str_directory_main . DIRECTORY_SEPARATOR . $str_class . DIRECTORY_SEPARATOR . $str_filename;
+				$str_file =  rtrim($this->_path_parent,'/') . DIRECTORY_SEPARATOR . $str_main_folder . DIRECTORY_SEPARATOR . $str_directory_main . DIRECTORY_SEPARATOR . $str_class . DIRECTORY_SEPARATOR . $str_filename;
 				
+				// echo '<br> ' . $str_file;
 				if ( ! file_exists($str_file)) {
 					return false;
 				}

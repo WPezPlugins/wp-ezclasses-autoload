@@ -8,7 +8,7 @@ WP ezClasses Autoload
 IMPORTANT - Using WP ezClasses Autoload
 =======================================
 
-You are certainly welcome to use individual WP ezClasses on an as needed basis. It is intentionally uber-granular.
+You are certainly welcome to use individual WP ezClasses on an as needed basis. It is intentionally uber-granular and developer-friendly.
 
 However, one of the founding ideals of the WP ezClasses framework is to reduce redundant code, as well as extend the native WordPress framework. That is, to "facade" (so to speak) native WP and make it quick and easier to work with. If it helps, try to imagine WP ezClasses as WordPress 6.5.
 
@@ -16,7 +16,7 @@ It's important to note that WP ezClasses is *not* targeted to developers looking
 
 On the other hand, if you're doing custom work for unique WordPress based applications then WP ezClasses is for you. By unique we mean for a client or group of clients. You're not necessarily trying to develop traditional free-standing WP plugins and WP themes for the masses. 
 
-For example, we all agree the same class should not be to in multiple plugins in the same install. Clearly, that is a coding and maintenance nightmare. Instead, a single copy of the class would reside in your WP ezClasses Autoload library. It's there, waiting. Just like the traditional WP frameform.
+For example, we all agree the same class (i.e., same code, different name, obvious) should not be in multiple plugins in the same install. Clearly, that is a coding and maintenance nightmare. Instead, a single copy of the class would reside in your WP ezClasses library. It's there, ready & waiting. Just like the traditional WP frameform.
 
 
 
@@ -38,22 +38,15 @@ In short, use WP ezMU-Plugins to load WP ezClasses Master Singleton and then WP 
 And Finally...
 ==============
 
-As you add (within WP ezClasses Autoload) classes to your personalized version of the WP ezClasses framework, those folders could / should be Git submodules. 
+Also in your mu-plugins folder will be a folder wp-ezclasses. In that will be the individual WP ezClasses that you're leaning on. There will also be a set of subfolders within the wp-exclasses folder. That will be explained in the README each WP ezClasseses product. Yes, there is a method to the madness of the naming convention. 
 
-http://www.git-scm.com/book/en/Git-Tools-Submodules
-
-If you're not familiar with submodules, imagine submodules as repos within repos. In this case, WP ezClasses Autoload is the outer "wrapper" repo and the individual WP ezClasses will be submodules within it.
-
-Yes, a bit granular. But that's the point. We want to keep things silo'ed and well organized. We don't want to force anyone to do or use anything they don't want to. In other words, we didn't want to force the whole of the WP ezClasses framework on people. That would be silly, as well as poor architecture.
-
-Note: This also allows the individual classes to be addressed asunqiue and freestanding products, focused and finely tuned, as good classes / products should be. 
-
-There are particulars to submodule'ing WP exClasses into WP ezClasses Autoload. Those details / instructions will be with each class. 
+Note: Establishing and maintaining this structure also allows the individual classes to be addressed as unqiue and freestanding products, focused and finely tuned, as good classes / products should be. 
 
 
-p.s. The folder: myclasses
+
+p.s. The folder: wp-myclasses
 ==========================
 
 Once you get comfortble with WP ezClasses we hope you'll be inspired to think about WP dev the WP ezClasses way. That is, you'll become a WP ezDeveloper. 
 
-All you'll have to do is follow the WP ezClasses naming convention and the WP ezClasses Autoload plugin will load your classes as well.
+All you'll have to do is follow the WP ezClasses naming convention and the WP ezClasses Autoload plugin can be used to load your classes as well.
