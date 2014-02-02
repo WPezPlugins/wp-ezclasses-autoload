@@ -47,7 +47,7 @@ if ( !defined('ABSPATH') ) {
 }
 
 if ( ! class_exists('WP_ezClasses_Master_Singleton')){
-	require_once('_class-wp-ezclasses-master-singleton/class-wp-ezclasses-master-singleton.php');
+	require_once('class-wp-ezclasses-master-singleton/class-wp-ezclasses-master-singleton.php');
 }
 
 if ( ! class_exists('WP_ezClasses_Autoload')){
