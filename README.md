@@ -46,8 +46,10 @@ That is the path would look like this:
 
 mu-plugins / wp-ezclasses / foo / class-wp-ezclasses-foo-1-bar2 / class-wp-ezclasses-foo-1-bar2.php
 
+Technically, the WP ezClasses Autoload logic parses the name of the requested and then rearranges that a bit to build the path to do the require_once().
 
-Yes, the naming convention is somewhat heavy handed, but that seemed better than too vague. 
+Yes, some might say the naming convention is somewhat heavy handed and the structure very particular, but that seemed better than too vague and sprawling. 
+
 
 Note: Establishing and maintaining this structure also allows the individual classes to be addressed and maintained as unqiue and freestanding products, focused and finely tuned, as good classes / products should be. It also *not* forces you to buy into the entire WP ezClasses ecosystem. WP ezClasses empowers you to be selective about what you lean on. 
 
