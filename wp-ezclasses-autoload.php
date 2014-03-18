@@ -28,25 +28,21 @@ License: MIT
 /*
  * == CHANGE LOG == 
  *
+ * == 18 March 2014 ==
+ * --- removed: Commented out: add_action('activated_plugin', array(&$this, 'load_this_wp_plugin_first'));
+ *
  * == 10 Jan 2014 ==
  * --- added: extends WP_ezClasses_Master_Singleton
  * --- added: class_alias('WP_ezClasses_Methods_Static', 'WP_ezMethods')
  */
 
-/*
- * Note: "global" properties inherited from WP_ezClasses_Master_Singleton
- *
- * $_bool_ezc_log 					turns the log (wpezToolsClassesLog() on and off (protected, default: true)
- * $_bool_ezc_validate				turns off _validation methods (protected, default: true)
- * $_bool_ezc_apply_filters			if you want to use the filters then set this to true (protected, default: false)
- */
 
 if ( !defined('ABSPATH') ) {
 	header('HTTP/1.0 403 Forbidden');
     die();
 }
 
-if ( ! class_exists('WP_ezClasses_Master_Singleton')){
+if ( ! class_exists('Class_WP_ezClasses_Master_Singleton')){
 	require_once('class-wp-ezclasses-master-singleton/class-wp-ezclasses-master-singleton.php');
 }
 
@@ -71,7 +67,7 @@ if ( ! class_exists('WP_ezClasses_Autoload')){
 			$this->_basename = plugin_basename( __FILE__ );
 			$this->_file = __FILE__ ;
 		
-			add_action('activated_plugin', array(&$this, 'load_this_wp_plugin_first'));
+			//	add_action('activated_plugin', array(&$this, 'load_this_wp_plugin_first'));
 		
 			spl_autoload_register(null, false);
 		
@@ -79,8 +75,8 @@ if ( ! class_exists('WP_ezClasses_Autoload')){
 			
 			spl_autoload_register(array($this, 'wp_ezclasses_autoload'));
 			
-			if ( class_exists('Class_WP_ezClasses_Methods_Static') && ! class_exists('WP_ezMethods')){
-				class_alias('Class_WP_ezClasses_Methods_Static', 'WP_ezMethods');
+			if ( class_exists('Class_WP_ezClasses_Core_Methods_Static') && ! class_exists('WP_ezMethods')){
+				class_alias('Class_WP_ezClasses_Core_Methods_Static', 'WP_ezMethods');
 			}
 		}
 	
@@ -132,7 +128,7 @@ if ( ! class_exists('WP_ezClasses_Autoload')){
 				$int_pos_directory_trail_underscore = strpos($str_class, '-', $int_pos_directory_lead_underscore) + 1;
 		
 				$str_directory_main = strtolower(substr( $str_class, $int_offset, ($int_pos_directory_lead_underscore - $int_offset) ));
-				$str_directory_sub = strtolower(substr( $str_class, $int_pos_directory_trail_underscore, strlen($str_class) ));
+			//	$str_directory_sub = strtolower(substr( $str_class, $int_pos_directory_trail_underscore, strlen($str_class) ));
 
 				$str_filename = $str_class . '.php';
 				$str_file =  rtrim($this->_path_parent,'/') . DIRECTORY_SEPARATOR . $str_main_folder . DIRECTORY_SEPARATOR . $str_directory_main . DIRECTORY_SEPARATOR . $str_class . DIRECTORY_SEPARATOR . $str_filename;
@@ -142,7 +138,7 @@ if ( ! class_exists('WP_ezClasses_Autoload')){
 					return false;
 				}
 							
-				require_once ($str_file);
+				require ($str_file);
 			}
 			
 		}
