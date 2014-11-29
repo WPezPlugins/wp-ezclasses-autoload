@@ -33,7 +33,7 @@ if ( ! class_exists('Class_WP_ezClasses_Master_Singleton') ){
 		/*
 		 * More info: http://scotty-t.com/2012/07/09/wp-you-oop/
 		 */
-		public static function ezc_get_instance($mix_args = NULL) {
+		public static function ez_new($mix_args = NULL) {
 		
 			$str_get_called_class = get_called_class();
 				
@@ -41,7 +41,7 @@ if ( ! class_exists('Class_WP_ezClasses_Master_Singleton') ){
 				self::$arr_instance[$str_get_called_class] = new $str_get_called_class();
 				
 				// note: the mix_args passed in are passed again
-				self::$arr_instance[$str_get_called_class]->ezc_init($mix_args);  
+				self::$arr_instance[$str_get_called_class]->ez__construct($mix_args);  
 			}
 			
 			return self::$arr_instance[$str_get_called_class];
@@ -51,7 +51,7 @@ if ( ! class_exists('Class_WP_ezClasses_Master_Singleton') ){
 		/*
 		 * Note: Only called the first time the class/object is instantiated. (Duh?)
 		 */
-		abstract public function ezc_init();  
+		abstract public function ez__construct();  
 
 
 		/*

@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: WP ezClasses Autoload
-Plugin URI: http://WPezClasses.com?source="plugin"
-Description: "Wrapper" plugin to autoload the WP ezClasses framework. WP ezClasses (https://github.com/wpezclasses/) is growing collection of classes (and methods) architected and engineered to fulfill the needs of WordPress theme and plugin developers. 
-Version: 0.5.0.0
+Plugin Name: WPezClasses Autoload
+Plugin URI: https://github.com/WPezPlugins/wp-ezclasses-autoload
+Description: "Wrapper" plugin to autoload the WPezClasses framework. WPezClasses (https://github.com/wpezclasses/) is growing collection of classes (and methods) architected and engineered to fulfill the needs of WordPress theme and plugin developers. 
+Version: 0.5.1.0
 Author: Mark Simchock for Alchemy United (http://AlchemyUnited.com)
-Author URI: http://ChiefAlchemist.com?source="plugin"
+Author URI: http://ChiefAlchemist.com?source="plugin_WPezClasses_Autoload"
 License: MIT
 */
 
@@ -27,6 +27,9 @@ License: MIT
  
 /*
  * == CHANGE LOG == 
+ *
+ * == 29 November 2014 ==
+ * --- changed: updates due to changes in Class_WP_ezClasses_Master_Singleton
  *
  * == 18 March 2014 ==
  * --- removed: Commented out: add_action('activated_plugin', array(&$this, 'load_this_wp_plugin_first'));
@@ -56,16 +59,11 @@ if ( ! class_exists('WP_ezClasses_Autoload')){
 		private $_basename;
 		private $_file;
 		
-		protected function __construct() {}
+		protected function __construct(){}
 		
-		public function ezc_init(){
+		public function ez__construct(){
 		
-			$this->_version = '0.5.0';
-			$this->_url = plugin_dir_url( __FILE__ );
-			$this->_path = plugin_dir_path( __FILE__ );
-			$this->_path_parent = dirname($this->_path);
-			$this->_basename = plugin_basename( __FILE__ );
-			$this->_file = __FILE__ ;
+		  $this->setup();
 		
 			//	add_action('activated_plugin', array(&$this, 'load_this_wp_plugin_first'));
 		
@@ -81,6 +79,19 @@ if ( ! class_exists('WP_ezClasses_Autoload')){
 			if ( class_exists('Class_WP_ezClasses_ezCore_Static_Helpers') && ! class_exists('WPezHelpers')){
 				class_alias('Class_WP_ezClasses_ezCore_Static_Helpers', 'WPezHelpers');
 			}
+		}
+		
+		/**
+		 *
+		 */
+		protected function setup(){
+		
+			$this->_version = '0.5.0';
+			$this->_url = plugin_dir_url( __FILE__ );
+			$this->_path = plugin_dir_path( __FILE__ );
+			$this->_path_parent = dirname($this->_path);
+			$this->_basename = plugin_basename( __FILE__ );
+			$this->_file = __FILE__ ;
 		}
 	
 		/*
@@ -151,5 +162,5 @@ if ( ! class_exists('WP_ezClasses_Autoload')){
 		}
 	}
 }
-$init_wp_ezclasses_autoload = WP_ezClasses_Autoload::ezc_get_instance();
+$new_wp_ezclasses_autoload = WP_ezClasses_Autoload::ez_new();
 ?>
