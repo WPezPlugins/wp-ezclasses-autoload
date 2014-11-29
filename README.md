@@ -1,4 +1,4 @@
-# Org: WPezClasses
+# Org: WPezPlugins
 ### Product: WPezClasses_Autoload (plugin)
 
 ##### Simple "wrapper" plugin to autoload the WPezClasses framework. 
