@@ -78,6 +78,9 @@ if ( ! class_exists('WP_ezClasses_Autoload')){
 			if ( class_exists('Class_WP_ezClasses_ezCore_Methods_Static') && ! class_exists('WP_ezMethods')){
 				class_alias('Class_WP_ezClasses_ezCore_Methods_Static', 'WP_ezMethods');
 			}
+			if ( class_exists('Class_WP_ezClasses_ezCore_Static_Helpers') && ! class_exists('WPezHelpers')){
+				class_alias('Class_WP_ezClasses_ezCore_Static_Helpers', 'WPezHelpers');
+			}
 		}
 	
 		/*
